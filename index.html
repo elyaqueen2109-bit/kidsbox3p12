@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kids Box 3 - Unit 1: Page 12</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Nunito', 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh; display: flex; justify-content: center;
+    align-items: flex-start; padding: 20px;
+  }
+  .container {
+    max-width: 1200px; width: 100%;
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(20px);
+    border-radius: 48px; padding: 30px;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .header { text-align: center; margin-bottom: 28px; }
+  .header h1 {
+    font-family: 'Fredoka One', cursive; font-size: 3.2rem;
+    background: linear-gradient(135deg,#f7971e,#ffd200);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+  }
+  .header .subtitle {
+    font-size: 1.2rem; color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.08); padding: 6px 28px;
+    border-radius: 40px; display: inline-block;
+    border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(4px);
+    font-weight: 700;
+  }
+
+  .tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 25px; flex-wrap: wrap; }
+  .tab-btn {
+    border: none; padding: 12px 20px; border-radius: 60px;
+    font-size: 0.88rem; font-weight: 800; font-family: 'Nunito', sans-serif;
+    cursor: pointer; background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.3s ease; backdrop-filter: blur(4px);
+  }
+  .tab-btn:hover { background: rgba(255,255,255,0.12); color: #fff; transform: translateY(-2px); }
+  .tab-btn.active {
+    background: linear-gradient(135deg,#f7971e,#ffd200); color: #1a1a2e;
+    border-color: transparent; box-shadow: 0 8px 30px rgba(247,151,30,0.35);
+    transform: translateY(-2px);
+  }
+  .tab-content { display: none; animation: fadeSlide 0.5s ease forwards; }
+  .tab-content.active { display: block; }
+  @keyframes fadeSlide { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+
+  .coll {
+    background: rgba(255,255,255,0.04); border-radius: 32px;
+    border: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(8px); margin: 15px 0;
+    overflow: hidden; transition: all 0.3s;
+  }
+  .coll-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 28px; cursor: pointer; user-select: none;
+    transition: background 0.2s;
+  }
+  .coll-head:hover { background: rgba(255,255,255,0.04); }
+  .coll-title {
+    font-family: 'Fredoka One', cursive; font-size: 1.6rem;
+    color: #ffd200; display: flex; align-items: center; gap: 14px;
+  }
+  .coll-arrow {
+    font-size: 1.4rem; color: #ffd200;
+    transition: transform 0.3s ease; font-weight: 800;
+  }
+  .coll.open .coll-arrow { transform: rotate(90deg); }
+  .coll-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+    padding: 0 28px;
+  }
+  .coll.open .coll-body { max-height: 12000px; padding: 4px 28px 28px; }
+
+  .image-container { text-align: center; margin-bottom: 25px; }
+  .image-container img {
+    max-width: 100%; max-height: 650px; width: auto;
+    border-radius: 24px; border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .section-sub {
+    color: rgba(255,255,255,0.55); font-weight: 700;
+    text-align: center; margin-bottom: 18px; font-size: 0.95rem;
+  }
+
+  .q-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+  .q-list.two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .q-row {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.04); padding: 12px 16px;
+    border-radius: 18px; border: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap;
+  }
+  .q-num {
+    background: linear-gradient(135deg,#f7971e,#ffd200); color: #1a1a2e;
+    width: 30px; height: 30px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 800; flex: 0 0 auto; font-size: 0.9rem;
+  }
+  .q-text { color: #fff; font-weight: 700; font-size: 1rem; flex: 1 1 250px; }
+  .q-input {
+    flex: 1 1 120px; min-width: 90px; padding: 10px 14px;
+    border-radius: 30px; border: 2px solid rgba(255,210,0,0.4);
+    background: rgba(255,255,255,0.06); color: #fff;
+    font-size: 1rem; font-family: 'Nunito', sans-serif;
+    font-weight: 700; outline: none; transition: all 0.3s;
+  }
+  .q-input::placeholder { color: rgba(255,255,255,0.35); font-weight: 600; }
+  .q-input:focus { border-color: #ffd200; background: rgba(255,210,0,0.06); }
+  .q-input.correct { border-color: #4ade80; background: rgba(74,222,128,0.1); }
+  .q-input.wrong { border-color: #f87171; background: rgba(248,113,113,0.1); }
+
+  /* ===== BLANK (инлайн для текста песни) ===== */
+  .blank {
+    display: inline-block; width: 150px; padding: 5px 12px;
+    margin: 0 4px; border-radius: 12px;
+    border: 2px dashed #ffd200; background: rgba(15,12,41,0.6);
+    color: #ffd200; font-family: 'Nunito', sans-serif;
+    font-weight: 800; font-size: 1rem; text-align: center;
+    outline: none; transition: all 0.25s;
+    vertical-align: middle;
+  }
+  .blank::placeholder { color: rgba(255,210,0,0.4); font-weight: 600; }
+  .blank:focus { border-style: solid; box-shadow: 0 0 14px rgba(255,210,0,0.5); }
+  .blank.correct { border-color: #4ade80; border-style: solid; color: #4ade80; background: rgba(74,222,128,0.1); }
+  .blank.wrong { border-color: #f87171; border-style: solid; color: #f87171; background: rgba(248,113,113,0.1); }
+
+  /* ===== LYRICS ===== */
+  .lyrics {
+    background: rgba(255,210,0,0.06); padding: 26px 30px;
+    border-radius: 24px; border-left: 6px solid #ffd200;
+    color: #fff; font-size: 1.15rem; line-height: 2.5;
+    font-weight: 600;
+  }
+  .lyrics p { margin-bottom: 20px; }
+  .lyrics p:last-child { margin-bottom: 0; }
+  .lyrics .stanza { margin-bottom: 24px; }
+
+  /* ===== Dialog (Suzy & Uncle Fred) ===== */
+  .dialog-block {
+    background: rgba(255,255,255,0.04);
+    border-radius: 24px;
+    padding: 18px 22px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 14px;
+  }
+  .dialog-q {
+    display: flex; gap: 10px; align-items: baseline;
+    margin-bottom: 12px; flex-wrap: wrap;
+  }
+  .dialog-who { color: #60a5fa; font-weight: 800; font-size: 1rem; }
+  .dialog-text { color: #fff; font-weight: 700; font-size: 1.05rem; }
+  .dialog-opts { display: flex; flex-direction: column; gap: 8px; }
+  .dialog-opt {
+    display: flex; gap: 12px; align-items: center;
+    padding: 10px 16px; border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 2px solid rgba(255,255,255,0.08);
+    cursor: pointer; transition: all 0.2s;
+    color: #fff; font-weight: 700; font-size: 1rem;
+    text-align: left; font-family: 'Nunito', sans-serif;
+  }
+  .dialog-opt:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,210,0,0.4); }
+  .dialog-opt .letter {
+    background: linear-gradient(135deg,#f7971e,#ffd200); color: #1a1a2e;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 800; flex: 0 0 auto; font-size: 0.9rem;
+  }
+  .dialog-opt.correct {
+    background: linear-gradient(135deg,#4ade80,#22c55e);
+    color: #1a1a2e; border-color: transparent;
+    box-shadow: 0 8px 24px rgba(74,222,128,0.4);
+  }
+  .dialog-opt.correct .letter { background: #1a1a2e; color: #4ade80; }
+  .dialog-opt.wrong {
+    background: linear-gradient(135deg,#f87171,#ef4444);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 8px 24px rgba(248,113,113,0.4);
+  }
+  .dialog-opt.wrong .letter { background: #fff; color: #ef4444; }
+  .dialog-opt:disabled { cursor: default; }
+
+  .yn-row {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.04); padding: 12px 16px;
+    border-radius: 18px; border: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap;
+  }
+  .yn-text { color: #fff; font-weight: 700; font-size: 1rem; flex: 1 1 250px; }
+  .yn-btn {
+    border: none; padding: 10px 26px; border-radius: 60px;
+    font-size: 0.95rem; font-weight: 800; font-family: 'Nunito', sans-serif;
+    cursor: pointer; transition: all 0.25s cubic-bezier(0.175,0.885,0.32,1.275);
+    background: rgba(255,255,255,0.06); color: #fff;
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+  }
+  .yn-btn:hover { transform: translateY(-3px); background: rgba(255,255,255,0.14); box-shadow: 0 8px 20px rgba(255,255,255,0.1); }
+  .yn-btn.active {
+    background: linear-gradient(135deg,#f7971e,#ffd200); color: #1a1a2e;
+    border-color: transparent;
+    box-shadow: 0 8px 30px rgba(247,151,30,0.4);
+  }
+  .yn-feedback { font-size: 1.4rem; font-weight: 800; min-width: 34px; text-align: center; }
+  .yn-feedback.ok { color: #4ade80; }
+  .yn-feedback.err { color: #f87171; }
+
+  .story-box {
+    background: rgba(255,210,0,0.06); padding: 24px 28px;
+    border-radius: 24px; border-left: 6px solid #ffd200;
+    color: #fff; font-size: 1.1rem; line-height: 1.9;
+    font-weight: 600;
+  }
+  .story-box b { color: #ffd200; font-weight: 800; }
+  .story-box p { margin-bottom: 14px; }
+  .story-box p:last-child { margin-bottom: 0; }
+
+  .story-wrap { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+  .story-text { flex: 1 1 380px; min-width: 260px; }
+  .story-avatar { flex: 0 0 auto; text-align: center; }
+  .story-avatar img {
+    max-width: 220px; width: 100%;
+    border-radius: 28px; background: #ffffff; padding: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 0 5px rgba(255,210,0,0.85);
+  }
+
+  /* ===== SLIDES ===== */
+  .slide-stage {
+    background: rgba(255,255,255,0.04);
+    border-radius: 32px; padding: 30px 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+    min-height: 500px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 20px; position: relative; overflow: hidden;
+  }
+  .slide-people {
+    display: flex; gap: 24px; align-items: center; justify-content: center;
+    flex-wrap: wrap; min-height: 260px;
+  }
+  .slide-people img {
+    max-height: 280px; max-width: 260px;
+    object-fit: contain; background: #ffffff;
+    border-radius: 28px; padding: 22px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 0 5px rgba(255,210,0,0.85);
+    transition: transform 0.3s;
+  }
+  .slide-people img:hover { transform: translateY(-6px) scale(1.05); }
+
+  .slide-phrase {
+    font-family: 'Fredoka One', cursive; font-size: 2.2rem;
+    color: #ffd200; text-align: center; letter-spacing: 1px;
+    text-shadow: 0 4px 12px rgba(247,151,30,0.4); padding: 4px 20px;
+  }
+  .slide-options {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 12px; max-width: 500px; width: 100%;
+  }
+  .slide-opt {
+    border: none; padding: 16px 24px; border-radius: 20px;
+    font-size: 1.3rem; font-weight: 800; font-family: 'Nunito', sans-serif;
+    cursor: pointer; transition: all 0.25s cubic-bezier(0.175,0.885,0.32,1.275);
+    background: rgba(255,255,255,0.06); color: #fff;
+    border: 2px solid rgba(255,255,255,0.15); backdrop-filter: blur(4px);
+  }
+  .slide-opt:hover { transform: translateY(-3px); background: rgba(255,255,255,0.14); box-shadow: 0 8px 24px rgba(255,255,255,0.1); }
+  .slide-opt.correct {
+    background: linear-gradient(135deg,#4ade80,#22c55e);
+    color: #1a1a2e; border-color: transparent;
+    box-shadow: 0 8px 30px rgba(74,222,128,0.4);
+  }
+  .slide-opt.wrong {
+    background: linear-gradient(135deg,#f87171,#ef4444);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 8px 30px rgba(248,113,113,0.4);
+  }
+  .slide-opt:disabled { cursor: default; }
+
+  .slide-nav {
+    display: flex; gap: 12px; justify-content: center; align-items: center;
+    margin-top: 20px; flex-wrap: wrap;
+  }
+  .slide-counter {
+    color: #fff; font-weight: 800; font-size: 1.1rem;
+    background: rgba(255,255,255,0.06); padding: 10px 22px;
+    border-radius: 60px; border: 1px solid rgba(255,255,255,0.12);
+    min-width: 90px; text-align: center;
+  }
+  .slide-result { font-size: 1.3rem; font-weight: 800; min-height: 2rem; text-align: center; }
+  .slide-result.ok { color: #4ade80; }
+  .slide-result.err { color: #f87171; }
+  .slide-result .hint { color: #ffd200; }
+
+  /* ===== AUDIO ===== */
+  .audio-player {
+    background: rgba(255,255,255,0.04); border-radius: 28px;
+    padding: 20px; border: 1px solid rgba(255,255,255,0.06);
+    margin: 15px 0;
+  }
+  .audio-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; align-items: center; }
+  .audio-btn {
+    border: none; width: 50px; height: 50px; border-radius: 50%;
+    font-size: 1.15rem; font-weight: 800; cursor: pointer;
+    background: rgba(255,255,255,0.08); color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.25s cubic-bezier(0.175,0.885,0.32,1.275);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .audio-btn:hover { background: rgba(255,255,255,0.18); transform: translateY(-3px); }
+  .audio-btn.main {
+    width: 64px; height: 64px; font-size: 1.4rem;
+    background: linear-gradient(135deg,#f7971e,#ffd200); color: #1a1a2e;
+    box-shadow: 0 8px 30px rgba(247,151,30,0.4);
+  }
+  .audio-btn.main:hover { box-shadow: 0 12px 40px rgba(247,151,30,0.6); }
+  .progress-wrap {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: 14px; color: #fff; font-weight: 700; font-size: 0.9rem;
+  }
+  .progress-bar {
+    flex: 1; height: 10px; background: rgba(255,255,255,0.1);
+    border-radius: 10px; overflow: hidden; cursor: pointer; position: relative;
+  }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(135deg,#f7971e,#ffd200);
+    transition: width 0.15s linear;
+  }
+  .audio-status { text-align: center; margin-top: 10px; font-size: 0.9rem; color: rgba(255,255,255,0.5); font-weight: 700; }
+
+  .btn {
+    border: none; padding: 12px 28px; border-radius: 60px;
+    font-size: 1rem; font-weight: 800; font-family: 'Nunito', sans-serif;
+    cursor: pointer; transition: all 0.25s cubic-bezier(0.175,0.885,0.32,1.275);
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn:active { transform: scale(0.95); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn:disabled:hover { transform: none; }
+  .btn-gold {
+    background: linear-gradient(135deg,#f7971e,#ffd200); color: #1a1a2e;
+    box-shadow: 0 8px 30px rgba(247,151,30,0.3);
+  }
+  .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(247,151,30,0.45); }
+  .btn-gold:disabled:hover { box-shadow: 0 8px 30px rgba(247,151,30,0.3); }
+  .btn-glass {
+    background: rgba(255,255,255,0.06); color: #fff;
+    border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(4px);
+  }
+  .btn-glass:hover { background: rgba(255,255,255,0.14); transform: translateY(-3px); }
+  .btn-blue {
+    background: linear-gradient(135deg,#60a5fa,#3b82f6); color: #fff;
+    box-shadow: 0 8px 30px rgba(96,165,250,0.25);
+  }
+  .btn-blue:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(96,165,250,0.35); }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 15px 0 5px; }
+
+  .feedback-box {
+    text-align: center; font-size: 1.1rem; font-weight: 700; color: #fff;
+    min-height: 2.5rem; padding: 10px; border-radius: 40px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+    margin: 12px 0;
+  }
+  .feedback-box .highlight { color: #ffd200; }
+  .feedback-box .correct { color: #4ade80; }
+  .feedback-box .wrong { color: #f87171; }
+
+  /* ===== MATCH COLUMNS + CANVAS ===== */
+  .match-cols {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin: 20px auto 0;
+    max-width: 900px;
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px;
+  }
+  .match-col { display: flex; flex-direction: column; gap: 14px; }
+  .match-item {
+    display: flex; gap: 12px; align-items: center;
+    background: rgba(255,255,255,0.05);
+    padding: 12px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #fff; font-weight: 700; font-size: 1rem;
+    min-height: 54px;
+  }
+  .match-num {
+    background: linear-gradient(135deg,#f7971e,#ffd200); color: #1a1a2e;
+    width: 30px; height: 30px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 800; flex: 0 0 auto; font-size: 0.9rem;
+  }
+  #matchCanvas {
+    position: absolute; left: 0; top: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 5;
+  }
+  #matchCanvas.drawing { pointer-events: auto; cursor: crosshair; }
+
+  /* ===== DRAW TOOLS ===== */
+  .draw-tools {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    justify-content: center; align-items: center;
+    background: rgba(255,255,255,0.04);
+    padding: 14px 20px; border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin: 15px auto; max-width: 700px;
+  }
+  .pencil-btn {
+    border: none; padding: 10px 22px; border-radius: 60px;
+    font-size: 0.95rem; font-weight: 800; font-family: 'Nunito', sans-serif;
+    cursor: pointer; transition: all 0.25s;
+    background: rgba(255,255,255,0.06); color: #fff;
+    border: 1px solid rgba(255,255,255,0.12);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .pencil-btn:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+  .pencil-btn.active {
+    background: linear-gradient(135deg,#f7971e,#ffd200); color: #1a1a2e;
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(247,151,30,0.4);
+  }
+  .color-dot {
+    width: 36px; height: 36px; border-radius: 50%;
+    cursor: pointer; border: 3px solid rgba(255,255,255,0.15);
+    transition: all 0.2s;
+  }
+  .color-dot:hover { transform: scale(1.1); }
+  .color-dot.active { border-color: #fff; box-shadow: 0 0 0 3px rgba(255,210,0,0.6); }
+  .color-dot[data-color="gold"]   { background: #ffd200; }
+  .color-dot[data-color="green"]  { background: #22c55e; }
+  .color-dot[data-color="blue"]   { background: #3b82f6; }
+  .color-dot[data-color="red"]    { background: #ef4444; }
+  .color-dot[data-color="purple"] { background: #a855f7; }
+
+  .footer-note {
+    text-align: center; margin-top: 25px; color: rgba(255,255,255,0.25);
+    font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 18px;
+  }
+
+  @media (max-width: 700px) {
+    .header h1 { font-size: 2.2rem; }
+    .container { padding: 16px; }
+    .coll-head { padding: 16px 20px; }
+    .coll-title { font-size: 1.2rem; }
+    .coll-body { padding: 0 18px; }
+    .coll.open .coll-body { padding: 4px 18px 20px; }
+    .q-list.two-col { grid-template-columns: 1fr; }
+    .q-row, .yn-row { flex-direction: column; align-items: flex-start; }
+    .q-input { width: 100%; min-width: 0; }
+    .q-text, .yn-text { white-space: normal; }
+    .image-container img { max-height: 400px; }
+    .slide-phrase { font-size: 1.5rem; }
+    .slide-people img { max-height: 170px; max-width: 160px; padding: 14px; border-radius: 18px; }
+    .slide-options { grid-template-columns: 1fr 1fr; }
+    .slide-opt { font-size: 1.1rem; padding: 12px 16px; }
+    .story-wrap { flex-direction: column-reverse; }
+    .story-avatar img { max-width: 180px; }
+    .tab-btn { padding: 10px 14px; font-size: 0.78rem; }
+    .match-cols { gap: 16px; padding: 12px; }
+    .match-item { font-size: 0.85rem; padding: 8px 10px; min-height: 46px; }
+    .match-num { width: 24px; height: 24px; font-size: 0.75rem; }
+    .lyrics { font-size: 1rem; line-height: 2.6; padding: 18px 20px; }
+    .blank { width: 110px; font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>🌳 In the Garden</h1>
+    <span class="subtitle">🌟 Unit 1 — Page 12 🌟</span>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tab-q7">7️⃣ Look, think and answer</button>
+    <button class="tab-btn" data-tab="tab-q8">8️⃣ Read and check</button>
+    <button class="tab-btn" data-tab="tab-q9">9️⃣ Say 'yes' or 'no'</button>
+    <button class="tab-btn" data-tab="tab-enjoy">🎯 Enjoy / Want</button>
+    <button class="tab-btn" data-tab="tab-song">🎵 Song</button>
+    <button class="tab-btn" data-tab="tab-suz">📝 Suzy & Uncle Fred</button>
+    <button class="tab-btn" data-tab="tab-match">🖍 Look and match</button>
+  </div>
+
+  <!-- ============ 7 ============ -->
+  <div class="tab-content active" id="tab-q7">
+    <div class="coll open" id="coll7">
+      <div class="coll-head" onclick="toggleColl('coll7')">
+        <div class="coll-title"><span>7️⃣ Look, think and answer</span></div>
+        <span class="coll-arrow">▶</span>
+      </div>
+      <div class="coll-body">
+        <div class="image-container">
+          <img src="page12.png" alt="Page 12" draggable="false"
+               onerror="this.parentNode.innerHTML='<p style=\'color:#ffd200;text-align:center;font-weight:700;\'>⚠ Put <b>page12.png</b> next to the HTML file.</p>'">
+        </div>
+
+        <div class="q-list two-col" id="q7List"></div>
+
+        <div class="btn-group" style="margin-top:20px;">
+          <button class="btn btn-blue" id="check7Btn">✅ Check</button>
+          <button class="btn btn-gold" id="show7Btn">👀 Show Answers</button>
+          <button class="btn btn-glass" id="reset7Btn">🔄 Reset</button>
+        </div>
+        <div class="feedback-box" id="fb7">✍️ Answer the questions and click <span class="highlight">Check</span>!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 8 ============ -->
+  <div class="tab-content" id="tab-q8">
+    <div class="coll open" id="coll8">
+      <div class="coll-head" onclick="toggleColl('coll8')">
+        <div class="coll-title"><span>8️⃣ Read and check</span></div>
+        <span class="coll-arrow">▶</span>
+      </div>
+      <div class="coll-body">
+        <div class="story-box">
+          <div class="story-wrap">
+            <div class="story-text">
+              <p><b>Hi! I'm Aunt May.</b></p>
+              <p>Look at everyone in the garden! Stella's reading. She enjoys reading about science. She's clever and she wants to be a doctor. Simon's with his Uncle Fred. Simon's happy today because he loves riding his bike.</p>
+              <p>Suzy wants to wash her dog. Dotty's naughty. She doesn't like having a bath. Grandpa's standing next to the bath and he needs a towel.</p>
+              <p>Grandma's quiet. She enjoys painting. She's painting a beautiful picture of her granddaughter, Stella.</p>
+            </div>
+            <div class="story-avatar">
+              <img src="aunt_may.png" alt="Aunt May" draggable="false"
+                   onerror="this.parentNode.innerHTML='<p style=\'color:#ffd200;font-weight:700;font-size:0.9rem;\'>⚠ aunt_may.png</p>'">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 9 ============ -->
+  <div class="tab-content" id="tab-q9">
+    <div class="coll open" id="coll9">
+      <div class="coll-head" onclick="toggleColl('coll9')">
+        <div class="coll-title"><span>9️⃣ Say 'yes' or 'no'</span></div>
+        <span class="coll-arrow">▶</span>
+      </div>
+      <div class="coll-body">
+        <div class="q-list" id="q9List"></div>
+
+        <div class="btn-group" style="margin-top:20px;">
+          <button class="btn btn-gold" id="reset9Btn">🔄 Reset</button>
+        </div>
+        <div class="feedback-box" id="fb9">👆 Choose <span class="highlight">Yes</span> or <span class="highlight">No</span> for each sentence!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ENJOY / WANT ============ -->
+  <div class="tab-content" id="tab-enjoy">
+    <div class="coll open" id="collEnjoy">
+      <div class="coll-head" onclick="toggleColl('collEnjoy')">
+        <div class="coll-title"><span>🎯 Enjoy / Want — choose the correct word</span></div>
+        <span class="coll-arrow">▶</span>
+      </div>
+      <div class="coll-body">
+        <div class="slide-stage" id="slideStage">
+          <div class="slide-people" id="slidePeople"></div>
+          <div class="slide-phrase" id="slidePhrase"></div>
+          <div class="slide-options" id="slideOptions">
+            <button class="slide-opt" data-ans="enjoy">enjoy</button>
+            <button class="slide-opt" data-ans="enjoys">enjoys</button>
+            <button class="slide-opt" data-ans="want">want</button>
+            <button class="slide-opt" data-ans="wants">wants</button>
+          </div>
+          <div class="slide-result" id="slideResult"></div>
+        </div>
+
+        <div class="slide-nav">
+          <button class="btn btn-glass" id="prevSlide">← Previous</button>
+          <span class="slide-counter" id="slideCounter">1 / 13</span>
+          <button class="btn btn-gold" id="nextSlide">Next →</button>
+          <button class="btn btn-glass" id="resetSlides">🔄 Reset all</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SONG ============ -->
+  <div class="tab-content" id="tab-song">
+    <div class="coll open" id="collSong">
+      <div class="coll-head" onclick="toggleColl('collSong')">
+        <div class="coll-title"><span>🎵 Listen and sing — fill in the names</span></div>
+        <span class="coll-arrow">▶</span>
+      </div>
+      <div class="coll-body">
+        <div class="audio-player" data-audio="16.mp3">
+          <div class="audio-row">
+            <button class="audio-btn rew" title="−3 seconds">⏪</button>
+            <button class="audio-btn main play" title="Play / Pause">▶️</button>
+            <button class="audio-btn fwd" title="+3 seconds">⏩</button>
+            <button class="audio-btn stop" title="Restart">🔄</button>
+          </div>
+          <div class="progress-wrap">
+            <span class="cur">0:00</span>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+            <span class="dur">0:00</span>
+          </div>
+          <div class="audio-status">Click ▶️ to play</div>
+        </div>
+
+        <div class="image-container">
+          <img src="song.png" alt="Song" draggable="false"
+               onerror="this.parentNode.innerHTML='<p style=\'color:#ffd200;text-align:center;font-weight:700;\'>⚠ Put <b>song.png</b> next to the HTML file.</p>'">
+        </div>
+
+        <div class="section-sub">🎧 Listen and fill in the names.</div>
+
+        <div class="lyrics" id="songLyrics">
+          <div class="stanza">
+            Aunt May's a doctor,<br>
+            She's got straight black hair.<br>
+            <input class="blank" data-answer="Grandpa" placeholder="?"> 's a farmer,<br>
+            His beard is short and fair.
+          </div>
+          <div class="stanza">
+            <input class="blank" data-answer="Grandma" placeholder="?"> is quiet,<br>
+            She wants to paint all day.<br>
+            <input class="blank" data-answer="Uncle Fred" placeholder="?"> is funny,<br>
+            And his curly hair is grey.
+          </div>
+          <div class="stanza">
+            <input class="blank" data-answer="Simon" placeholder="?"> can be naughty,<br>
+            He loves 'Lock and Key'.<br>
+            His sister <input class="blank" data-answer="Stella" placeholder="?"> 's clever,<br>
+            And she doesn't like TV.
+          </div>
+          <div class="stanza">
+            <input class="blank" data-answer="Suzy" placeholder="?"> isn't quiet,<br>
+            But she's very small.<br>
+            Here's our family,<br>
+            We really love them all.<br>
+            We really love them all.
+          </div>
+        </div>
+
+        <div class="btn-group" style="margin-top:20px;">
+          <button class="btn btn-blue" id="checkSongBtn">✅ Check</button>
+          <button class="btn btn-gold" id="showSongBtn">👀 Show Answers</button>
+          <button class="btn btn-glass" id="resetSongBtn">🔄 Reset</button>
+        </div>
+        <div class="feedback-box" id="fbSong">🎧 Listen and fill in the names!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SUZY & UNCLE FRED ============ -->
+  <div class="tab-content" id="tab-suz">
+    <div class="coll open" id="collSuz">
+      <div class="coll-head" onclick="toggleColl('collSuz')">
+        <div class="coll-title"><span>📝 Suzy & Uncle Fred — choose the correct answer</span></div>
+        <span class="coll-arrow">▶</span>
+      </div>
+      <div class="coll-body">
+        <div style="display:flex;gap:24px;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:20px;">
+          <div style="text-align:center;">
+            <img src="suzy.png" alt="Suzy" draggable="false"
+                 style="max-height:160px;background:#fff;border-radius:24px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,210,0,0.85);"
+                 onerror="this.parentNode.innerHTML='<p style=\'color:#ffd200;font-weight:700;font-size:0.85rem;\'>⚠ suzy.png</p>'">
+          </div>
+          <div style="text-align:center;">
+            <img src="uncle_fred.png" alt="Uncle Fred" draggable="false"
+                 style="max-height:160px;background:#fff;border-radius:24px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,210,0,0.85);"
+                 onerror="this.parentNode.innerHTML='<p style=\'color:#ffd200;font-weight:700;font-size:0.85rem;\'>⚠ uncle_fred.png</p>'">
+          </div>
+        </div>
+
+        <div id="suzList"></div>
+
+        <div class="btn-group" style="margin-top:20px;">
+          <button class="btn btn-gold" id="resetSuzBtn">🔄 Reset</button>
+        </div>
+        <div class="feedback-box" id="fbSuz">👆 Choose the correct answer for each question!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MATCH ============ -->
+  <div class="tab-content" id="tab-match">
+    <div class="coll open" id="collMatch">
+      <div class="coll-head" onclick="toggleColl('collMatch')">
+        <div class="coll-title"><span>🖍 Look and match the sentences</span></div>
+        <span class="coll-arrow">▶</span>
+      </div>
+      <div class="coll-body">
+        <div class="image-container">
+          <img src="wb_match.png" alt="Workbook — Match" draggable="false"
+               onerror="this.parentNode.innerHTML='<p style=\'color:#ffd200;text-align:center;font-weight:700;\'>⚠ Put <b>wb_match.png</b> next to the HTML file.</p>'">
+        </div>
+
+        <div class="section-sub">🖍 Draw lines to match the sentences on the left with the words on the right.</div>
+
+        <div class="draw-tools">
+          <button class="pencil-btn active" id="pencilBtn3">✏️ Pencil</button>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <div class="color-dot active" data-color="gold"   onclick="setDrawColor(3,this)"></div>
+            <div class="color-dot" data-color="green"  onclick="setDrawColor(3,this)"></div>
+            <div class="color-dot" data-color="blue"   onclick="setDrawColor(3,this)"></div>
+            <div class="color-dot" data-color="red"    onclick="setDrawColor(3,this)"></div>
+            <div class="color-dot" data-color="purple" onclick="setDrawColor(3,this)"></div>
+          </div>
+          <button class="pencil-btn" id="clearDrawBtn3">🧹 Clear</button>
+        </div>
+
+        <div class="match-cols" id="matchCols">
+          <div class="match-col">
+            <div class="match-item"><span class="match-num">1</span><span>Uncle Fred's got a bike.</span></div>
+            <div class="match-item"><span class="match-num">2</span><span>Grandpa's got a camera.</span></div>
+            <div class="match-item"><span class="match-num">3</span><span>Simon's got a ball.</span></div>
+            <div class="match-item"><span class="match-num">4</span><span>Mr Star's got a guitar.</span></div>
+            <div class="match-item"><span class="match-num">5</span><span>Stella's got a book.</span></div>
+            <div class="match-item"><span class="match-num">6</span><span>Grandma's got some eggs.</span></div>
+          </div>
+          <div class="match-col">
+            <div class="match-item"><span class="match-num">a</span><span>She wants to read it.</span></div>
+            <div class="match-item"><span class="match-num">b</span><span>He wants to take a photo.</span></div>
+            <div class="match-item"><span class="match-num">c</span><span>She wants to make a cake.</span></div>
+            <div class="match-item"><span class="match-num">d</span><span>He wants to play it.</span></div>
+            <div class="match-item"><span class="match-num">e</span><span>He wants to ride it.</span></div>
+            <div class="match-item"><span class="match-num">f</span><span>He wants to play basketball.</span></div>
+          </div>
+          <canvas id="matchCanvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">✨ Interactive page for online lessons 🔊</div>
+</div>
+
+<script>
+/* ===== SOUND FX ===== */
+class SoundFX {
+  constructor(){ this.ctx=null; try{this.ctx=new (window.AudioContext||window.webkitAudioContext)();}catch(e){} }
+  play(type){
+    if(!this.ctx) return;
+    try{
+      if(type==='correct'){
+        [523,659,784].forEach((f,i)=>{
+          const o=this.ctx.createOscillator(), g=this.ctx.createGain();
+          o.connect(g); g.connect(this.ctx.destination);
+          g.gain.value=0.15; g.gain.exponentialRampToValueAtTime(0.01,this.ctx.currentTime+0.2+i*0.1);
+          o.type='sine'; o.frequency.value=f;
+          o.start(this.ctx.currentTime+i*0.1); o.stop(this.ctx.currentTime+0.2+i*0.1);
+        });
+      } else if(type==='wrong'){
+        const o=this.ctx.createOscillator(), g=this.ctx.createGain();
+        o.connect(g); g.connect(this.ctx.destination);
+        g.gain.value=0.2; g.gain.exponentialRampToValueAtTime(0.01,this.ctx.currentTime+0.3);
+        o.type='sawtooth'; o.frequency.setValueAtTime(400,this.ctx.currentTime);
+        o.frequency.exponentialRampToValueAtTime(200,this.ctx.currentTime+0.25);
+        o.start(this.ctx.currentTime); o.stop(this.ctx.currentTime+0.3);
+      } else if(type==='reveal'){
+        [523,587,659,784].forEach((f,i)=>{
+          const o=this.ctx.createOscillator(), g=this.ctx.createGain();
+          o.connect(g); g.connect(this.ctx.destination);
+          g.gain.value=0.1; g.gain.exponentialRampToValueAtTime(0.01,this.ctx.currentTime+0.15+i*0.08);
+          o.type='sine'; o.frequency.value=f;
+          o.start(this.ctx.currentTime+i*0.08); o.stop(this.ctx.currentTime+0.15+i*0.08);
+        });
+      }
+    }catch(e){}
+  }
+}
+const sound = new SoundFX();
+document.addEventListener('click',()=>{ if(sound.ctx && sound.ctx.state==='suspended') sound.ctx.resume(); },{once:true});
+
+/* ===== TABS ===== */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    const t=this.dataset.tab;
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.toggle('active',c.id===t));
+    if(t==='tab-match') setTimeout(resizeMatchCanvas, 100);
+  });
+});
+
+/* ===== COLLAPSE ===== */
+function toggleColl(id){
+  document.getElementById(id).classList.toggle('open');
+  if(id==='collMatch') setTimeout(resizeMatchCanvas, 550);
+}
+
+/* ===== HELPERS ===== */
+function norm(s){
+  return s.toLowerCase()
+    .replace(/[’‘`]/g,"'")
+    .replace(/[.,!?;:]/g,'')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+/* ===== 7 ===== */
+const q7 = [
+  { q: "Where's Stella?",   full: "She's in the garden.", keys: ["garden"] },
+  { q: "Is Simon happy?",   full: "Yes, he is.",          keys: ["yes"] },
+  { q: "Is Dotty naughty?", full: "Yes, she is.",         keys: ["yes"] },
+  { q: "Who's painting?",   full: "Grandma.",             keys: ["grandma"] }
+];
+function buildQ7(){
+  const box=document.getElementById('q7List'); box.innerHTML='';
+  q7.forEach((item,i)=>{
+    const row=document.createElement('div');
+    row.className='q-row'; row.dataset.idx=i;
+    row.innerHTML=`
+      <span class="q-num">${i+1}</span>
+      <span class="q-text">${item.q}</span>
+      <input type="text" class="q-input" placeholder="...">
+    `;
+    box.appendChild(row);
+  });
+}
+buildQ7();
+
+document.getElementById('check7Btn').addEventListener('click',()=>{
+  let all=true;
+  document.querySelectorAll('#q7List .q-row').forEach(row=>{
+    const idx=+row.dataset.idx;
+    const inp=row.querySelector('.q-input');
+    const u=norm(inp.value);
+    const ok=u.length>0 && q7[idx].keys.every(k=>u.includes(norm(k)));
+    inp.classList.remove('correct','wrong');
+    if(ok) inp.classList.add('correct'); else { inp.classList.add('wrong'); all=false; }
+  });
+  const fb=document.getElementById('fb7');
+  if(all){ fb.innerHTML='✅ <span class="correct">All correct! Well done!</span>'; sound.play('correct'); }
+  else { fb.innerHTML='❌ <span class="wrong">Some answers need checking. Try again!</span>'; sound.play('wrong'); }
+});
+document.getElementById('show7Btn').addEventListener('click',()=>{
+  document.querySelectorAll('#q7List .q-row').forEach(row=>{
+    const idx=+row.dataset.idx;
+    row.querySelector('.q-input').value=q7[idx].full;
+    row.querySelector('.q-input').classList.add('correct');
+    row.querySelector('.q-input').classList.remove('wrong');
+  });
+  document.getElementById('fb7').innerHTML='👀 <span class="highlight">Answers shown!</span>';
+  sound.play('reveal');
+});
+document.getElementById('reset7Btn').addEventListener('click',()=>{
+  buildQ7();
+  document.getElementById('fb7').innerHTML='✍️ Answer the questions and click <span class="highlight">Check</span>!';
+});
+
+/* ===== 9 ===== */
+const q9 = [
+  { q: "Simon doesn't enjoy riding his bike.", a: "no"  },
+  { q: "Stella enjoys reading about science.", a: "yes" },
+  { q: "Stella doesn't want to be a doctor.",  a: "no"  },
+  { q: "Suzy wants to wash her doll.",         a: "no"  },
+  { q: "Dotty likes having a bath.",           a: "no"  },
+  { q: "Grandma enjoys painting.",             a: "yes" }
+];
+function buildQ9(){
+  const box=document.getElementById('q9List'); box.innerHTML='';
+  q9.forEach((item,i)=>{
+    const row=document.createElement('div');
+    row.className='yn-row'; row.dataset.correct=item.a;
+    row.innerHTML=`
+      <span class="q-num">${i+1}</span>
+      <span class="yn-text">${item.q}</span>
+      <button class="yn-btn" data-ans="yes">Yes</button>
+      <button class="yn-btn" data-ans="no">No</button>
+      <span class="yn-feedback"></span>
+    `;
+    box.appendChild(row);
+  });
+}
+buildQ9();
+
+document.getElementById('q9List').addEventListener('click',e=>{
+  if(!e.target.classList.contains('yn-btn')) return;
+  const row=e.target.closest('.yn-row');
+  const correct=row.dataset.correct, chosen=e.target.dataset.ans;
+  const fb=row.querySelector('.yn-feedback');
+  row.querySelectorAll('.yn-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  if(chosen===correct){ fb.textContent='✔'; fb.className='yn-feedback ok'; sound.play('correct'); }
+  else { fb.textContent='✘'; fb.className='yn-feedback err'; sound.play('wrong'); }
+  const all=document.querySelectorAll('#q9List .yn-row');
+  const done=document.querySelectorAll('#q9List .yn-feedback.ok').length;
+  const fb9=document.getElementById('fb9');
+  if(done===all.length) fb9.innerHTML='🎉 <span class="correct">All correct! Great job!</span>';
+  else fb9.innerHTML=`Progress: <span class="highlight">${done} / ${all.length}</span>`;
+});
+
+document.getElementById('reset9Btn').addEventListener('click',()=>{
+  buildQ9();
+  document.getElementById('fb9').innerHTML='👆 Choose <span class="highlight">Yes</span> or <span class="highlight">No</span> for each sentence!';
+});
+
+/* ===== SONG ===== */
+const songBlanks = () => document.querySelectorAll('#songLyrics .blank');
+document.getElementById('checkSongBtn').addEventListener('click',()=>{
+  let all=true;
+  songBlanks().forEach(inp=>{
+    const u=norm(inp.value);
+    const a=norm(inp.dataset.answer);
+    inp.classList.remove('correct','wrong');
+    if(u===a) inp.classList.add('correct');
+    else { inp.classList.add('wrong'); all=false; }
+  });
+  const fb=document.getElementById('fbSong');
+  if(all){ fb.innerHTML='✅ <span class="correct">All correct! Well done!</span>'; sound.play('correct'); }
+  else { fb.innerHTML='❌ <span class="wrong">Some names are wrong. Listen again!</span>'; sound.play('wrong'); }
+});
+document.getElementById('showSongBtn').addEventListener('click',()=>{
+  songBlanks().forEach(inp=>{
+    inp.value=inp.dataset.answer;
+    inp.classList.add('correct'); inp.classList.remove('wrong');
+  });
+  document.getElementById('fbSong').innerHTML='👀 <span class="highlight">Answers shown!</span>';
+  sound.play('reveal');
+});
+document.getElementById('resetSongBtn').addEventListener('click',()=>{
+  songBlanks().forEach(inp=>{ inp.value=''; inp.classList.remove('correct','wrong'); });
+  document.getElementById('fbSong').innerHTML='🎧 Listen and fill in the names!';
+});
+
+/* ===== SUZY & UNCLE FRED ===== */
+const suzData = [
+  { q: "Do you enjoy shopping?",              a: "I've got a new T-shirt.",              b: "No, I don't.",                       correct: "b" },
+  { q: "Does Grandma like painting?",         a: "Yes, I do.",                           b: "Yes, she loves painting.",           correct: "b" },
+  { q: "Does Stella want to be a doctor?",    a: "Yes, she does.",                       b: "Yes, she can.",                      correct: "a" },
+  { q: "Do you enjoy playing tennis?",        a: "Yes, he does.",                        b: "No, Aunt May enjoys playing tennis.", correct: "b" },
+  { q: "Does Dotty like having a bath?",      a: "No, she doesn't.",                     b: "She loves swimming.",                correct: "a" },
+  { q: "Do you wear a helmet on your bike?",  a: "Yes, I do.",                           b: "Simon's riding his bike.",           correct: "a" }
+];
+
+function buildSuz(){
+  const box=document.getElementById('suzList'); box.innerHTML='';
+  suzData.forEach((item,i)=>{
+    const block=document.createElement('div');
+    block.className='dialog-block'; block.dataset.idx=i;
+    block.innerHTML=`
+      <div class="dialog-q">
+        <span class="q-num">${i+1}</span>
+        <span class="dialog-who">Suzy:</span>
+        <span class="dialog-text">${item.q}</span>
+      </div>
+      <div class="dialog-opts">
+        <button class="dialog-opt" data-ans="a"><span class="letter">a</span><span>${item.a}</span></button>
+        <button class="dialog-opt" data-ans="b"><span class="letter">b</span><span>${item.b}</span></button>
+      </div>
+    `;
+    box.appendChild(block);
+  });
+}
+buildSuz();
+
+document.getElementById('suzList').addEventListener('click',e=>{
+  const btn=e.target.closest('.dialog-opt');
+  if(!btn) return;
+  const block=btn.closest('.dialog-block');
+  const idx=+block.dataset.idx;
+  const correct=suzData[idx].correct;
+  const chosen=btn.dataset.ans;
+
+  block.querySelectorAll('.dialog-opt').forEach(b=>{
+    b.disabled=false; b.classList.remove('correct','wrong');
+  });
+
+  if(chosen===correct){
+    btn.classList.add('correct');
+    sound.play('correct');
+  } else {
+    btn.classList.add('wrong');
+    block.querySelectorAll('.dialog-opt').forEach(b=>{
+      if(b.dataset.ans===correct) b.classList.add('correct');
+    });
+    sound.play('wrong');
+  }
+  block.querySelectorAll('.dialog-opt').forEach(b=>b.disabled=true);
+
+  const done=[...document.querySelectorAll('#suzList .dialog-block')].filter(b=>b.querySelector('.dialog-opt.correct')).length;
+  const fb=document.getElementById('fbSuz');
+  if(done===suzData.length) fb.innerHTML='🎉 <span class="correct">All correct! Great job!</span>';
+  else fb.innerHTML=`Progress: <span class="highlight">${done} / ${suzData.length}</span>`;
+});
+
+document.getElementById('resetSuzBtn').addEventListener('click',()=>{
+  buildSuz();
+  document.getElementById('fbSuz').innerHTML='👆 Choose the correct answer for each question!';
+});
+
+/* ============================================================
+   ENJOY / WANT — SLIDES
+   ============================================================ */
+const slides = [
+  { imgs: ["grandma.png"],                        phrase: "to cook dinner",              answer: "wants"  },
+  { imgs: ["mr_star.png", "mrs_star.png"],        phrase: "having parties",              answer: "enjoy"  },
+  { imgs: ["grandpa.png"],                        phrase: "fishing",                     answer: "enjoys" },
+  { imgs: ["stella.png"],                         phrase: "reading books about science", answer: "enjoys" },
+  { imgs: ["alex.png", "lenny.png"],              phrase: "to play football",            answer: "want"   },
+  { imgs: ["alex.png", "meera.png", "lenny.png"], phrase: "to listen to music",          answer: "want"   },
+  { imgs: ["simon.png"],                          phrase: "reading comics",              answer: "enjoys" },
+  { imgs: ["trevor.png"],                         phrase: "eating pencils",              answer: "enjoys" },
+  { imgs: ["mrs_star.png"],                       phrase: "to clean the room",           answer: "wants"  },
+  { imgs: ["simon.png", "uncle_fred.png"],        phrase: "playing football",            answer: "enjoy"  },
+  { imgs: ["mrs_star.png"],                       phrase: "singing songs",               answer: "enjoys" },
+  { imgs: ["maskman.png"],                        phrase: "to ride a bike",              answer: "wants"  },
+  { imgs: ["maskmanmarymonty.png"],               phrase: "playing games",               answer: "enjoy"  }
+];
+
+let currentSlide = 0;
+
+function renderSlide(){
+  const s = slides[currentSlide];
+  const people = document.getElementById('slidePeople');
+  people.innerHTML = '';
+  s.imgs.forEach(file=>{
+    const img = document.createElement('img');
+    img.src = file; img.alt = ''; img.draggable = false;
+    img.onerror = function(){
+      this.style.display='none';
+      const p = document.createElement('div');
+      p.textContent = '⚠ ' + file;
+      p.style.color='#ffd200'; p.style.fontWeight='800'; p.style.padding='20px';
+      people.appendChild(p);
+    };
+    people.appendChild(img);
+  });
+
+  document.getElementById('slidePhrase').textContent = s.phrase;
+
+  const opts = document.querySelectorAll('#slideOptions .slide-opt');
+  opts.forEach(btn=>{
+    btn.disabled = false;
+    btn.classList.remove('correct','wrong');
+    btn.onclick = ()=>{
+      if(btn.disabled) return;
+      const chosen = btn.dataset.ans;
+      const correct = s.answer;
+      opts.forEach(b=>b.disabled=true);
+      if(chosen === correct){
+        btn.classList.add('correct');
+        document.getElementById('slideResult').innerHTML='✅ <span class="hint">Correct!</span>';
+        document.getElementById('slideResult').className='slide-result ok';
+        sound.play('correct');
+      } else {
+        btn.classList.add('wrong');
+        opts.forEach(b=>{ if(b.dataset.ans === correct) b.classList.add('correct'); });
+        document.getElementById('slideResult').innerHTML='❌ <span class="hint">Correct answer: </span>' + correct;
+        document.getElementById('slideResult').className='slide-result err';
+        sound.play('wrong');
+      }
+    };
+  });
+
+  document.getElementById('slideCounter').textContent = (currentSlide+1) + ' / ' + slides.length;
+  document.getElementById('slideResult').innerHTML = '';
+  document.getElementById('slideResult').className = 'slide-result';
+  document.getElementById('prevSlide').disabled = (currentSlide === 0);
+  document.getElementById('nextSlide').disabled = (currentSlide === slides.length-1);
+}
+
+document.getElementById('prevSlide').addEventListener('click',()=>{
+  if(currentSlide>0){ currentSlide--; renderSlide(); }
+});
+document.getElementById('nextSlide').addEventListener('click',()=>{
+  if(currentSlide<slides.length-1){ currentSlide++; renderSlide(); }
+});
+document.getElementById('resetSlides').addEventListener('click',()=>{
+  currentSlide=0; renderSlide(); sound.play('reveal');
+});
+
+renderSlide();
+
+/* ===== AUDIO PLAYERS ===== */
+document.querySelectorAll('.audio-player').forEach(player=>{
+  const file   = player.dataset.audio;
+  const btnPlay= player.querySelector('.play');
+  const btnRew = player.querySelector('.rew');
+  const btnFwd = player.querySelector('.fwd');
+  const btnStop= player.querySelector('.stop');
+  const st     = player.querySelector('.audio-status');
+  const cur    = player.querySelector('.cur');
+  const dur    = player.querySelector('.dur');
+  const fill   = player.querySelector('.progress-fill');
+  const prog   = player.querySelector('.progress-bar');
+  let audio=null, playing=false;
+  function fmt(s){ if(!isFinite(s)) return '0:00'; const m=Math.floor(s/60), r=Math.floor(s%60); return m+':'+(r<10?'0':'')+r; }
+  function ensure(){
+    if(!audio){
+      audio=new Audio(file);
+      audio.addEventListener('loadedmetadata',()=>{ dur.textContent=fmt(audio.duration); });
+      audio.addEventListener('timeupdate',()=>{
+        cur.textContent=fmt(audio.currentTime);
+        if(audio.duration) fill.style.width=(audio.currentTime/audio.duration*100)+'%';
+      });
+      audio.addEventListener('ended',()=>{
+        playing=false; btnPlay.textContent='▶️';
+        st.textContent='✅ Finished!'; fill.style.width='100%';
+      });
+    }
+    return audio;
+  }
+  btnPlay.addEventListener('click',()=>{
+    const a=ensure();
+    if(playing){ a.pause(); playing=false; btnPlay.textContent='▶️'; st.textContent='⏸️ Paused'; return; }
+    a.play().then(()=>{ playing=true; btnPlay.textContent='⏸️'; st.textContent='🎧 Playing...'; })
+      .catch(()=>{ st.textContent='❌ File not found: '+file; });
+  });
+  btnRew.addEventListener('click',()=>{ const a=ensure(); a.currentTime=Math.max(0,a.currentTime-3); });
+  btnFwd.addEventListener('click',()=>{ const a=ensure(); a.currentTime=Math.min(a.duration||0,a.currentTime+3); });
+  btnStop.addEventListener('click',()=>{
+    const a=ensure(); a.pause(); a.currentTime=0; playing=false;
+    btnPlay.textContent='▶️'; st.textContent='🔄 Ready to play';
+    fill.style.width='0%'; cur.textContent='0:00';
+  });
+  prog.addEventListener('click',e=>{
+    const a=ensure(); if(!a.duration) return;
+    const r=prog.getBoundingClientRect();
+    a.currentTime=((e.clientX-r.left)/r.width)*a.duration;
+  });
+});
+
+/* ============================================================
+   MATCH — РИСОВАНИЕ ЛИНИЙ МЕЖДУ КОЛОНКАМИ
+   ============================================================ */
+const match3 = { ctx:null, color:'#ffd200', on:true, drawing:false };
+
+function resizeMatchCanvas(){
+  const cols = document.getElementById('matchCols');
+  const canvas = document.getElementById('matchCanvas');
+  if(!cols || !canvas) return;
+  const rect = cols.getBoundingClientRect();
+  if(rect.width < 10) return;
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width  = Math.round(rect.width * dpr);
+  canvas.height = Math.round(rect.height * dpr);
+  canvas.style.width  = rect.width + 'px';
+  canvas.style.height = rect.height + 'px';
+  match3.ctx = canvas.getContext('2d');
+  match3.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  match3.ctx.lineCap = 'round';
+  match3.ctx.lineJoin = 'round';
+  match3.ctx.strokeStyle = match3.color;
+  match3.ctx.lineWidth = 4;
+}
+
+(function initMatch(){
+  const cols   = document.getElementById('matchCols');
+  const canvas = document.getElementById('matchCanvas');
+  if(!cols || !canvas) return;
+
+  function tryInit(){
+    resizeMatchCanvas();
+    canvas.classList.add('drawing');
+    attachMatchEvents();
+  }
+  setTimeout(tryInit, 100);
+  setTimeout(resizeMatchCanvas, 500);
+  setTimeout(resizeMatchCanvas, 1200);
+  window.addEventListener('resize', resizeMatchCanvas);
+
+  let attached=false;
+  function attachMatchEvents(){
+    if(attached) return; attached=true;
+
+    function getPos(e){
+      const rect=canvas.getBoundingClientRect();
+      const p = e.touches ? e.touches[0] : (e.changedTouches ? e.changedTouches[0] : e);
+      return { x:p.clientX-rect.left, y:p.clientY-rect.top };
+    }
+    function start(e){ if(!match3.on||!match3.ctx) return; e.preventDefault();
+      match3.drawing=true; const pos=getPos(e);
+      match3.ctx.beginPath(); match3.ctx.moveTo(pos.x,pos.y); }
+    function move(e){ if(!match3.drawing||!match3.ctx) return; e.preventDefault();
+      const pos=getPos(e); match3.ctx.lineTo(pos.x,pos.y); match3.ctx.stroke(); }
+    function end(){ match3.drawing=false; }
+
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', end);
+    canvas.addEventListener('mouseleave', end);
+    canvas.addEventListener('touchstart', start, {passive:false});
+    canvas.addEventListener('touchmove', move, {passive:false});
+    canvas.addEventListener('touchend', end);
+    canvas.addEventListener('touchcancel', end);
+  }
+
+  document.getElementById('pencilBtn3').addEventListener('click',function(){
+    match3.on = !match3.on;
+    this.classList.toggle('active', match3.on);
+    canvas.classList.toggle('drawing', match3.on);
+    this.textContent = match3.on ? '✏️ Pencil' : '🚫 Off';
+  });
+  document.getElementById('clearDrawBtn3').addEventListener('click',()=>{
+    if(match3.ctx) match3.ctx.clearRect(0,0,canvas.width,canvas.height);
+  });
+})();
+
+function setDrawColor(n, el){
+  document.querySelectorAll('.color-dot').forEach(d=>d.classList.remove('active'));
+  el.classList.add('active');
+  const c = getComputedStyle(el).backgroundColor;
+  if(n===3){ match3.color=c; if(match3.ctx) match3.ctx.strokeStyle=c; }
+}
+</script>
+
+</body>
+</html>
